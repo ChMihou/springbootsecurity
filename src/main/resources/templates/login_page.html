@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html id="ng-app" ng-app="app"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="/css/login.css" type="text/css">
+</head>
+<body>
+<form class="login-page" action="/form" method="post">
+    <div class="form">
+        <h3>账户登录</h3>
+        <input type="text" placeholder="用户名" name="username" required="required"/>
+        <input type="password" placeholder="密码" name="password" required="required"/>
+        <span style="display: inline">
+            <input type="text" name="imageCode" placeholder="验证码" style="width: 50%;"/>
+            <img id="captchaImg" src="/code/image" onclick="changeCode()"/>
+        </span>
+        <input type="checkbox" name="remember-me"/> 记住我
+        <button type="submit">登录</button>
+    </div>
+</form>
+</body>
+<script>
+    function changeCode() {
+        var img = document.getElementById("captchaImg");
+        img.src = "/code/image?time=" + new Date().getTime();
+    }
+</script>
+</html>
